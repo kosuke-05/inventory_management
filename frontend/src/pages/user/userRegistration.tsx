@@ -8,6 +8,7 @@ import { Stack, Typography } from "@mui/material";
 import { TextFieldComponent } from "../../components/textFields/textFieldComponents";
 import { ReturnTopPage, SubmitButton } from "../../components/buttons/users/buttons";
 import { useNavigate } from "react-router-dom";
+import { UserPostHook } from "../../hooks/user/userPost";
 
 /**
  * ユーザー新規登録
@@ -30,10 +31,16 @@ export const UserRegistration = () => {
   // 画面遷移
   const navigate = useNavigate();
 
-  // 【新規登録はこちら】ボタン押下後の処理
-  const userRegistration = () => {
+  // hooks層
+  const userPost = UserPostHook();
 
-  }
+  /**
+   * 【新規登録はこちら】ボタン押下後の処理
+   * ①hooks層を呼び出す
+   */
+  const userRegistration = (data: UserRegistrationValidationType) => {
+    userPost.mutate(data);
+  };
 
   // トップ画面に戻る処理
   const returnTopPage = () => {
