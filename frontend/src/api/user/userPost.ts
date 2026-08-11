@@ -10,4 +10,6 @@ export const UserPostApi = async (data: UserRegistrationValidationType) => {
     headers: { "Content-Type" : "application/json" },
     body: JSON.stringify(data)
   });
+
+  return result.json();
 };
