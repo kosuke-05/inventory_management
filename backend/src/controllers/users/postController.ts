@@ -21,12 +21,12 @@ export const PostController = async (req: Request, res: Response) => {
   const result = await PostService(data);
 
   // パスワード以外の情報を取得
-  const { name, mailAddress } = result;
+  const { name, mail_address } = result;
 
   return res.status(201).json({
     data: {
       name: name,
-      mailAddress: mailAddress
+      mailAddress: mail_address
     },
     message: "ユーザー登録完了"
   })

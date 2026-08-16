@@ -17,3 +17,30 @@ export type UserRegistrationButtonPropsType = {
 export type ReturnTopPagePropsType = {
   onClick: () => void
 };
+
+// ユーザー登録のhooks層（通信成功）で受け取る型
+export type UserRegistrationSuccessHook = {
+  data: {
+    name: string,
+    mailAddress: string
+  },
+  message: string
+};
+
+// ユーザー登録のhooks層（通信成功）で受け取る型
+export type UserRegistrationErrorHook = {
+  message: string
+};
+
+// ユーザー新規登録のテキストフィールドの初期値
+export type UserRegistrationInitialValue = {
+  name: string,
+  mailAddress: string,
+  passWord: string
+};
+
+// ストアで扱うユーザー情報
+export type UserInformationType = {
+  name: string,
+  mailAddress: string
+};

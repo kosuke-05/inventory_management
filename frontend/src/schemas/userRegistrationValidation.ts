@@ -11,13 +11,17 @@ export const UserRegistrationValidation = zod.object({
         message: "2文字以上入力して下さい"
       }),
 
-  mainAddress:
+  mailAddress:
     zod
       .string()
-      .email(),
+      .email({
+        message: "アドレスの形式に誤りがあります"
+      }),
 
   passWord:
     zod
       .string()
-      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{5,}$/)
+      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{5,}$/, {
+        message: "パスワードの形式に誤りがあります"
+      })
 });
