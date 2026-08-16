@@ -1,7 +1,7 @@
 "use client"
 
 import { FormProvider, useForm } from "react-hook-form";
-import type { UserRegistrationValidationType } from "../../types/user/userType";
+import type { UserRegistrationInitialValue, UserRegistrationValidationType } from "../../types/user/userType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRegistrationValidation } from "../../schemas/userRegistrationValidation";
 import { Stack, Typography } from "@mui/material";
@@ -23,10 +23,15 @@ export const UserRegistration = () => {
     resolver: zodResolver(UserRegistrationValidation),
     defaultValues: {
       name: "",
-      mainAddress: "",
+      mailAddress: "",
       passWord: ""
     }
   });
+
+  // // 新規登録のテキストフィールド初期値
+  // const UserInitialValue: UserRegistrationInitialValue = {
+  //   name: ""
+  // }
 
   // 画面遷移
   const navigate = useNavigate();
@@ -37,9 +42,13 @@ export const UserRegistration = () => {
   /**
    * 【新規登録はこちら】ボタン押下後の処理
    * ①hooks層を呼び出す
+   * ②テキストフィールドのリセット
+   * ③新規登録完了後、在庫一覧画面に遷移
    */
   const userRegistration = (data: UserRegistrationValidationType) => {
     userPost.mutate(data);
+    registrationMethods.reset();
+    navigate("/products");
   };
 
   // トップ画面に戻る処理
