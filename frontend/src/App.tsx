@@ -4,22 +4,28 @@ import { UserCertification } from './pages/user/userCertification'
 import { Route, Routes } from 'react-router-dom'
 import { UserRegistration } from './pages/user/userRegistration'
 import { ProductList } from './pages/product/productsList'
+import { AppBarMenu } from './components/common/appBar'
 
 function App() {
 
   return (
-    <Box sx={{ p: 4 }}>
-      <Routes>
-        {/** メールアドレス・パスワードの認証画面 */}
-        <Route path='/' element={<UserCertification />} />
+    <>
+      {/** AppBar */}
+      <AppBarMenu />
 
-        {/** ユーザー新規登録 */}
-        <Route path='/registration' element={<UserRegistration />} />
+      <Box sx={{ p: 4 }}>
+        <Routes>
+          {/** メールアドレス・パスワードの認証画面 */}
+          <Route path='/' element={<UserCertification />} />
 
-        {/** 商品一覧 */}
-        <Route path='/products' element={<ProductList />} />
-      </Routes>
-    </Box>
+          {/** ユーザー新規登録 */}
+          <Route path='/registration' element={<UserRegistration />} />
+
+          {/** 商品一覧 */}
+          <Route path='/products' element={<ProductList />} />
+        </Routes>
+      </Box>
+    </>
   )
 }
 
