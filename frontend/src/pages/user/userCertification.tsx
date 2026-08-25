@@ -1,13 +1,14 @@
 "use client"
 
 import { FormProvider, useForm } from "react-hook-form";
-import type { UserCertificationValidationType } from "../../types/user/userType";
+import type { UserCertificationValidationType, UserRegistrationInitialValue } from "../../types/user/userType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserCertificationValidations } from "../../schemas/userValidation";
 import { Stack, Typography } from "@mui/material";
 import { TextFieldComponent } from "../../components/textFields/textFieldComponents";
 import { SubmitButton, UserRegistrationButton } from "../../components/buttons/users/buttons";
 import { useNavigate } from "react-router-dom";
+import { UserLoginHook } from "../../hooks/user/userLogin";
 
 // 【トップ画面】メールアドレス・パスワードの認証画面
 // ロジックコンポーネント
@@ -25,14 +26,17 @@ export const UserCertification = () => {
   // 画面遷移
   const navigate = useNavigate();
 
+  // hook
+  const userLogin = UserLoginHook();
+
   /**
    * メールアドレス・パスワードを入力後に送信ボタン押下後の処理
    * ①API通信を始める
    * ②データの登録が完了後、商品一覧画面に遷移
    * ※ログイン処理になるため、navigateで画面遷移よりも先にDBに同一データが登録できているか確認処理
    */
-  const afterSubmitButton = () => {
-
+  const afterSubmitButton = (data: Omit<UserRegistrationInitialValue, "name">) => {
+    userLogin.mutate(data);
   }
 
   // 新規登録ボタンを押下後の処理
