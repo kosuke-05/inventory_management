@@ -12,6 +12,6 @@ app.use(cors());
 app.use(express.json());
 
 // 各ルーティング
-app.use("/registration", postRouter);
+app.use("/user/registration", postRouter);
 
 export default app;
