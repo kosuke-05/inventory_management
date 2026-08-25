@@ -4,3 +4,6 @@ export type userDataType = {
   mailAddress: string,
   passWord: string
 };
+
+// ログイン処理のControllerに使用する型
+export type userLoginType = Omit<userDataType, "name">;

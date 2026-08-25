@@ -10,11 +10,11 @@ export const UserLoginHook = () => {
     mutationFn: UserLoginApi,
 
     onSuccess: () => {
-
+      // ストアにログイン情報を保存予定
     },
 
     onError: () => {
-
+      // ログインに失敗した場合、メッセージをUIで表示予定
     }
   })
 };
