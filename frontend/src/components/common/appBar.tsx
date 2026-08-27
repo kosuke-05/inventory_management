@@ -18,6 +18,7 @@ export const AppBarMenu = () => {
 
   return (
     <>
+      {/** AppBarだけでなく、在庫一覧画面も非表示にする必要がある */}
       {location.pathname !== "/" && location.pathname !== "/registration" && (
         <AppBar position="static" sx={{ width: "100%"}} >
           <Toolbar>

@@ -12,7 +12,7 @@ export const LoginController = async (req: Request, res: Response) => {
     })
   };
 
-  const result: string | null = await LoginService(data);
+  const result = await LoginService(data);
 
   // Serviceからnullが返ってきた場合
   if(!result) {
@@ -23,7 +23,8 @@ export const LoginController = async (req: Request, res: Response) => {
 
   return res.status(200).json({
     data: {
-      name: result
+      name: result.data.name,
+      mailAddress: result.data.mailAddress
     }
   })
-}
+};

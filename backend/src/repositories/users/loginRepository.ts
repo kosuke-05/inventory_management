@@ -10,7 +10,5 @@ export const LoginRepository = async (data: userLoginType) => {
     [mailAddress, passWord]
   );
 
-  const name = result.rows[0]?.name;
-
-  return name;
+  return result.rows[0];
 };
