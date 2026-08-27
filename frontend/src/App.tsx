@@ -1,12 +1,18 @@
 import { Box } from '@mui/material'
 import './App.css'
 import { UserCertification } from './pages/user/userCertification'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { UserRegistration } from './pages/user/userRegistration'
 import { ProductList } from './pages/product/productsList'
 import { AppBarMenu } from './components/common/appBar'
+import { UserStore } from './stores/user/userStore'
 
 function App() {
+  // 画面の現在地を取得
+  const location = useLocation();
+
+  // ストアから取得
+  const user = UserStore((state) => state.user);
 
   return (
     <>
@@ -22,7 +28,12 @@ function App() {
           <Route path='/registration' element={<UserRegistration />} />
 
           {/** 商品一覧 */}
-          <Route path='/products' element={<ProductList />} />
+          <Route
+            path='/products'
+            element={
+              user ? <ProductList />
+              : <Navigate to="/" replace />
+            } />
         </Routes>
       </Box>
     </>
