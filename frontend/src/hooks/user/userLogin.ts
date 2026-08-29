@@ -3,12 +3,16 @@
 import { useMutation } from "@tanstack/react-query"
 import { UserLoginApi } from "../../api/user/userLogin";
 import { UserStore } from "../../stores/user/userStore";
+import { useNavigate } from "react-router-dom";
 
 // ログイン処理
 export const UserLoginHook = () => {
   // ストアから取得
   const setUser = UserStore((state) => state.setUser);
-  const user = UserStore((state) => state.user);
+  const setErrorMessage = UserStore((state) => state.setErrorMessage);
+
+  // 画面遷移
+  const navigate = useNavigate();
 
   return useMutation({
     mutationFn: UserLoginApi,
@@ -21,13 +25,17 @@ export const UserLoginHook = () => {
       })
 
       console.log(`
-          名前：${user?.name}
-          メールアドレス：${user?.mailAddress}
+          名前：${res.data.name}
+          メールアドレス：${res.data.mailAddress}
         `);
+
+      // 在庫一覧画面に遷移
+      navigate("/products");
     },
 
-    onError: () => {
-      // ログインに失敗した場合、メッセージをUIで表示予定
+    onError: (res) => {
+      // エラーメッセージを渡す
+      setErrorMessage(res.message);
     }
   })
 };

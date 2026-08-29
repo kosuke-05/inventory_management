@@ -10,7 +10,11 @@ export const UserStore = create<UserStoreType>()(
     (set) => ({
       user: null,
       setUser: (user: UserInformationType) => set({ user: user }),
-      resetUser: () => set({ user: null })
+      resetUser: () => set({ user: null }),
+
+      errorMessage: null,
+      setErrorMessage: (msg: string) => set({ errorMessage: msg }),
+      resetErrorMessage: () => set({ errorMessage: null })
     }),
     {
       name: "local-storage"

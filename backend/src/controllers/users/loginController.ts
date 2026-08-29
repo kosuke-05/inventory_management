@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { userLoginType } from "../../types/users/userTypes";
+import { resLoginDataType, userLoginType } from "../../types/users/userTypes";
 import { LoginService } from "../../services/users/loginService";
 
 export const LoginController = async (req: Request, res: Response) => {
@@ -12,7 +12,13 @@ export const LoginController = async (req: Request, res: Response) => {
     })
   };
 
-  const result = await LoginService(data);
+  const result: resLoginDataType | null = await LoginService(data);
+
+  console.log(
+    `Controller：
+      名前：${result?.data.name}
+      メールアドレス：${result?.data.mailAddress}
+    `);
 
   // Serviceからnullが返ってきた場合
   if(!result) {
