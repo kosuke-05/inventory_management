@@ -4,5 +4,10 @@ import type { UserInformationType } from "../user/userType"
 export type UserStoreType = {
   user: UserInformationType | null,
   setUser: (user: UserInformationType) => void,
-  resetUser: () => void
+  resetUser: () => void,
+
+  // ログイン処理の際のエラーメッセーを管理
+  errorMessage: string | null,
+  setErrorMessage: (msg: string) => void,
+  resetErrorMessage: () => void
 };

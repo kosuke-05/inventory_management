@@ -1,16 +1,13 @@
 import { Box } from '@mui/material'
 import './App.css'
 import { UserCertification } from './pages/user/userCertification'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { UserRegistration } from './pages/user/userRegistration'
 import { ProductList } from './pages/product/productsList'
 import { AppBarMenu } from './components/common/appBar'
 import { UserStore } from './stores/user/userStore'
 
 function App() {
-  // 画面の現在地を取得
-  const location = useLocation();
-
   // ストアから取得
   const user = UserStore((state) => state.user);
 
