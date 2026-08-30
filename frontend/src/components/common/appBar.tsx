@@ -4,6 +4,7 @@ import { AppBar, Box, IconButton, Stack, Toolbar, Typography } from "@mui/materi
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserStore } from "../../stores/user/userStore";
 import { InventorySwitch } from "../switch/switchComponent";
+import { InventoryRegistrationButton } from "../buttons/inventory/buttons";
 
 // ログイン・新規登録画面以外で配置するAppBar
 export const AppBarMenu = () => {
@@ -19,7 +20,7 @@ export const AppBarMenu = () => {
   return (
     <>
       {/** AppBarだけでなく、在庫一覧画面も非表示にする必要がある */}
-      {location.pathname !== "/" && location.pathname !== "/registration" && (
+      {location.pathname !== "/" && location.pathname !== "/user/registration" && (
         <AppBar position="static" sx={{ width: "100%"}} >
           <Toolbar>
             <Stack direction="column" sx={{ width: "100%"}}>
@@ -30,7 +31,7 @@ export const AppBarMenu = () => {
                 }}>
                 <Box>
                   <IconButton
-                    onClick={() => navigate("/products")}
+                    onClick={() => navigate("/inventories")}
                     sx={{ color: "white" }}>
                     <Typography variant="body1">在庫管理</Typography>
                   </IconButton>
@@ -47,9 +48,14 @@ export const AppBarMenu = () => {
                 </Box>
               </Box>
 
-              {/** 在庫ありのみ表示するスイッチ */}
-              <Box>
-                <InventorySwitch />
+              <Box sx={{ position: "relative", display: "flex", alignItems: "center"}}>
+                {/** 在庫ありのみ表示するスイッチ */}
+                <Box sx={{ position: "absolute", left: "50%", transform: "translateX(-50%)", alignItems: "center"}}>
+                  <InventorySwitch />
+                </Box>
+                <Box sx={{ ml: "auto"}}>
+                  <InventoryRegistrationButton />
+                </Box>
               </Box>
             </Stack>
           </Toolbar>
