@@ -3,7 +3,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import type { UserCertificationValidationType, UserRegistrationInitialValue } from "../../types/user/userType";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserCertificationValidations } from "../../schemas/userValidation";
+import { UserCertificationValidations } from "../../schemas/user/userValidation";
 import { Stack, Typography } from "@mui/material";
 import { TextFieldComponent } from "../../components/textFields/textFieldComponents";
 import { SubmitButton, UserRegistrationButton } from "../../components/buttons/users/buttons";
@@ -41,7 +41,7 @@ export const UserCertification = () => {
 
   // 新規登録ボタンを押下後の処理
   const afterUserRegistrationButton = () => {
-    navigate("/registration");
+    navigate("/user/registration");
   }
 
   return (

@@ -1,14 +1,13 @@
 "use client"
 
 import { Grid, Typography } from "@mui/material";
-import { ProductCard } from "./productCard";
+import { ProductCard } from "../../components/cards/inventoryCard";
 
 /**
  * 商品一覧画面
  * ロジックコンポーネント
  */
-export const ProductList = () => {
-
+export const InventoriesList = () => {
 
   return (
     <>

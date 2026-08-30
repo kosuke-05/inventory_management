@@ -30,7 +30,7 @@ export const UserLoginHook = () => {
         `);
 
       // 在庫一覧画面に遷移
-      navigate("/products");
+      navigate("/inventories");
     },
 
     onError: (res) => {

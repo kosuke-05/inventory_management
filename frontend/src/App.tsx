@@ -3,9 +3,10 @@ import './App.css'
 import { UserCertification } from './pages/user/userCertification'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { UserRegistration } from './pages/user/userRegistration'
-import { ProductList } from './pages/product/productsList'
+import { InventoriesList } from './pages/inventory/inventoryList'
 import { AppBarMenu } from './components/common/appBar'
 import { UserStore } from './stores/user/userStore'
+import { InventoryRegistration } from './pages/inventory/inventoryRegistration'
 
 function App() {
   // ストアから取得
@@ -22,15 +23,18 @@ function App() {
           <Route path='/' element={<UserCertification />} />
 
           {/** ユーザー新規登録 */}
-          <Route path='/registration' element={<UserRegistration />} />
+          <Route path='/user/registration' element={<UserRegistration />} />
 
-          {/** 商品一覧 */}
+          {/** 在庫一覧 */}
           <Route
-            path='/products'
+            path='/inventories'
             element={
-              user ? <ProductList />
+              user ? <InventoriesList />
               : <Navigate to="/" replace />
             } />
+
+          {/** 在庫登録 */}
+          <Route path='/inventory/registration' element={<InventoryRegistration />} />
         </Routes>
       </Box>
     </>

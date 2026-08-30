@@ -1,9 +1,9 @@
 "use client"
 
 import { FormProvider, useForm } from "react-hook-form";
-import type { UserRegistrationInitialValue, UserRegistrationValidationType } from "../../types/user/userType";
+import type { UserRegistrationValidationType } from "../../types/user/userType";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserRegistrationValidation } from "../../schemas/userRegistrationValidation";
+import { UserRegistrationValidation } from "../../schemas/user/userRegistrationValidation";
 import { Stack, Typography } from "@mui/material";
 import { TextFieldComponent } from "../../components/textFields/textFieldComponents";
 import { ReturnTopPage, SubmitButton } from "../../components/buttons/users/buttons";

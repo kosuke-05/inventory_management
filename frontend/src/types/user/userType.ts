@@ -1,6 +1,6 @@
 import zod from "zod";
-import type { UserCertificationValidations } from "../../schemas/userValidation";
-import type { UserRegistrationValidation } from "../../schemas/userRegistrationValidation";
+import type { UserCertificationValidations } from "../../schemas/user/userValidation";
+import type { UserRegistrationValidation } from "../../schemas/user/userRegistrationValidation";
 
 // 【トップ画面】メールアドレス・パスワードの認証
 export type UserCertificationValidationType = zod.infer<typeof UserCertificationValidations>;
