@@ -5,7 +5,7 @@ import type { UserRegistrationValidationType } from "../../types/user/userType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRegistrationValidation } from "../../schemas/user/userRegistrationValidation";
 import { Stack, Typography } from "@mui/material";
-import { TextFieldComponent } from "../../components/textFields/textFieldComponents";
+import { TextFieldComponent } from "../../components/textFields/user/textFieldComponents";
 import { ReturnTopPage, SubmitButton } from "../../components/buttons/users/buttons";
 import { useNavigate } from "react-router-dom";
 import { UserPostHook } from "../../hooks/user/userPost";

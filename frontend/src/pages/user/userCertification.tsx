@@ -5,7 +5,7 @@ import type { UserCertificationValidationType, UserRegistrationInitialValue } fr
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserCertificationValidations } from "../../schemas/user/userValidation";
 import { Stack, Typography } from "@mui/material";
-import { TextFieldComponent } from "../../components/textFields/textFieldComponents";
+import { TextFieldComponent } from "../../components/textFields/user/textFieldComponents";
 import { SubmitButton, UserRegistrationButton } from "../../components/buttons/users/buttons";
 import { useNavigate } from "react-router-dom";
 import { UserLoginHook } from "../../hooks/user/userLogin";

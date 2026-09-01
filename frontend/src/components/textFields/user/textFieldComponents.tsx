@@ -1,5 +1,5 @@
 import { Controller, useFormContext } from "react-hook-form";
-import type { TextFieldComponentPropsType } from "../../types/user/propsTypes";
+import type { TextFieldComponentPropsType } from "../../../types/user/propsTypes";
 import { TextField } from "@mui/material";
 
 // メールアドレス・パスワードの認証フォーム
