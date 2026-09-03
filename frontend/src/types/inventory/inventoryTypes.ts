@@ -6,7 +6,16 @@ export type inventoryRegistrationValidationType = zod.infer<typeof inventoryRegi
 
 // テキストフィールドの型（propsでも使い回し）
 export type inventoryFieldsType = {
-  name: "name" | "count" | "memo",
-  label: "在庫名" | "在庫数" | "備考欄",
-  placeholder?: string
+  name: "name" | "count" | "category" | "memo",
+  label: "在庫名" | "在庫数" | "在庫のカテゴリ" | "備考欄",
+  placeholder?: string,
+  category?: ["食品", "飲料水", "家具", "家電", "文房具", "その他"]
+  component?: "textField" | "selectBox",
+  categoryLabel?: categoryLabelType[]
+};
+
+// 在庫カテゴリで使用する型
+export type categoryLabelType = {
+  en: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others",
+  ja: "食品" | "飲料" | "家具" | "家電" | "文房具" | "その他"
 };
