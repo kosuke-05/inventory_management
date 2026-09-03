@@ -19,3 +19,11 @@ export type categoryLabelType = {
   en: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others",
   ja: "食品" | "飲料" | "家具" | "家電" | "文房具" | "その他"
 };
+
+// 登録される在庫情報
+export type inventoryData = {
+  name: string,
+  count: number,
+  memo?: string
+  category: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others"
+};

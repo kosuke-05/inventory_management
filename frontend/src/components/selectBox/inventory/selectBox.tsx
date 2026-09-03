@@ -23,7 +23,7 @@ export const InventorySelectBox = ({
           <Select
             {...field}
             displayEmpty>
-            <MenuItem>以下から一つ選択して下さい</MenuItem>
+            <MenuItem value="">以下から一つ選択して下さい</MenuItem>
             {categoryLabel?.map((value) => (
               <MenuItem value={value.en}>{value.ja}</MenuItem>
             ))}

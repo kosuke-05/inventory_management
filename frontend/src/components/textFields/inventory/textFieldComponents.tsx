@@ -24,8 +24,16 @@ export const InventoryTextField = ({
           helperText={fieldState.error?.message}
           label={label}
           placeholder={placeholder}
+          type={name === "count" ? "number" : "text"}
           multiline={name === "memo"}
-          rows={name === "memo" ? 5 : undefined} />
+          rows={name === "memo" ? 5 : undefined}
+          onChange={(e) => {
+            if(name === "count") {
+              field.onChange(Number(e.target.value));
+            } else {
+              field.onChange(e.target.value);
+            }
+          }} />
       )} />
   )
 };
