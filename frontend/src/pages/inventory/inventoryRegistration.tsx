@@ -4,9 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Stack, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import { inventoryRegistrationValidation } from "../../schemas/user/inventory/inventoryRegistrationValidations";
-import type { categoryLabelType, inventoryFieldsType, inventoryRegistrationValidationType } from "../../types/inventory/inventoryTypes";
+import type { categoryLabelType, inventoryData, inventoryFieldsType, inventoryRegistrationValidationType } from "../../types/inventory/inventoryTypes";
 import { InventoryTextField } from "../../components/textFields/inventory/textFieldComponents";
 import { InventorySelectBox } from "../../components/selectBox/inventory/selectBox";
+import { InventorySubmitButton } from "../../components/buttons/inventory/buttons";
+import { InventoryPostHook } from "../../hooks/user/inventory/inventoryPost";
 
 // 在庫登録画面
 export const InventoryRegistration = () => {
@@ -17,9 +19,13 @@ export const InventoryRegistration = () => {
     defaultValues: {
       name: "",
       count: 0,
-      memo: ""
+      memo: "",
+      category: undefined
     }
   });
+
+  // hookの取得
+  const inventoryPostHook = InventoryPostHook();
 
   // カテゴリ
   const CategoryLabel: categoryLabelType[] = [
@@ -58,15 +64,15 @@ export const InventoryRegistration = () => {
   ]
 
   // 在庫登録ボタン押下後の処理
-  const afterInventoryRegistrationButton = () => {
-
+  const afterInventorySubmitButton = (data: inventoryData) => {
+    inventoryPostHook.mutate(data);
   }
 
   return (
     <FormProvider {...inventoryRegistrationMethods}>
       <Box>
         <Typography variant="h6">在庫登録画面</Typography>
-        <form onSubmit={inventoryRegistrationMethods.handleSubmit(afterInventoryRegistrationButton)}>
+        <form onSubmit={inventoryRegistrationMethods.handleSubmit(afterInventorySubmitButton)}>
           <Stack direction="column" spacing={2} sx={{ p: 2 }}>
             {inventoryFields.map((item) => (
               (item.component === "textField" ?
@@ -82,6 +88,9 @@ export const InventoryRegistration = () => {
                   categoryLabel={CategoryLabel} />
               )
             ))}
+
+            {/** 送信ボタン */}
+            <InventorySubmitButton />
           </Stack>
         </form>
       </Box>
