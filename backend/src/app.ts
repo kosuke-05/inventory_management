@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import postRouter from "./routes/users/postRoute";
 import loginRouter from "./routes/users/loginRoute";
+import postInventoryRoute from "./routes/inventory/postRoute";
+import getRoute from "./routes/inventory/getRoute";
 
 // expressの設定ファイル
 const app = express();
@@ -15,5 +17,7 @@ app.use(express.json());
 // 各ルーティング
 app.use("/user/registration", postRouter);
 app.use("/user/login", loginRouter);
+app.use("/inventory/registration", postInventoryRoute);
+app.use("/inventory/get", getRoute);
 
 export default app;

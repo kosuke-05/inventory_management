@@ -11,7 +11,6 @@ import { Button, Card, CardActions, CardContent, CardHeader, Typography } from "
  */
 export const ProductCard = () => {
 
-
   return (
     <Card>
       <CardHeader
