@@ -66,7 +66,10 @@ export const InventoryRegistration = () => {
   // 在庫登録ボタン押下後の処理
   const afterInventorySubmitButton = (data: inventoryData) => {
     inventoryPostHook.mutate(data);
-  }
+
+    // 入力フォームのリセット
+    inventoryRegistrationMethods.reset();
+  };
 
   return (
     <FormProvider {...inventoryRegistrationMethods}>

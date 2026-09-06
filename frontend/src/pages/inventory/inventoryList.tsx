@@ -8,6 +8,11 @@ import { ProductCard } from "../../components/cards/inventoryCard";
  * ロジックコンポーネント
  */
 export const InventoriesList = () => {
+  // hooksの取得
+  
+
+  // DBから在庫情報を取得
+  const inventories[] = 
 
   return (
     <>
