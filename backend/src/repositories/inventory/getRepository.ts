@@ -5,5 +5,5 @@ export const GetInventoryRepository = async () => {
     "SELECT name, count, created_at, updated_at, deleted_at, memo, category FROM inventories"
   );
 
-  return result;
+  return result.rows;
 };

@@ -11,11 +11,11 @@ export type inventoryFieldsType = {
   placeholder?: string,
   category?: ["食品", "飲料水", "家具", "家電", "文房具", "その他"]
   component?: "textField" | "selectBox",
-  categoryLabel?: categoryLabelType[]
+  categoryLabel?: categoryType[]
 };
 
 // 在庫カテゴリで使用する型
-export type categoryLabelType = {
+export type categoryType = {
   en: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others",
   ja: "食品" | "飲料" | "家具" | "家電" | "文房具" | "その他"
 };
@@ -26,4 +26,36 @@ export type inventoryData = {
   count: number,
   memo?: string
   category: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others"
+};
+
+// DBから取得したデータ形式
+export type inventoryArrayType = {
+  name: string,
+  count: number,
+  created_at: string,
+  updated_at: string,
+  deleted_at: string,
+  memo?: string,
+  category: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others"
+};
+
+// InventoryCardのprops
+export type inventoryCardProps = {
+  name: string,
+  count: number,
+  created_at: string,
+  updated_at: string,
+  deleted_at: string,
+  memo?: string,
+  category: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others"
+};
+
+// カテゴリラベル
+export type categoryLabelType = {
+  food: "食料",
+  drink: "飲料",
+  furniture: "家具",
+  electronic: "家電",
+  stationery: "文房具",
+  others: "その他"
 };
