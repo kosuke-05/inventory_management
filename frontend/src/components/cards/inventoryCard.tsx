@@ -1,6 +1,8 @@
 "use client"
 
-import { Button, Card, CardActions, CardContent, CardHeader, Typography } from "@mui/material";
+import { Card, CardActions, CardContent, CardHeader, Typography } from "@mui/material";
+import type { categoryLabelType, inventoryCardProps } from "../../types/inventory/inventoryTypes";
+import { InventoryDetailButton } from "../buttons/inventory/buttons";
 
 // 商品単体
 /**
@@ -9,17 +11,36 @@ import { Button, Card, CardActions, CardContent, CardHeader, Typography } from "
  * ②CardContent → 内容
  * ③CardActions → アクションボタン等
  */
-export const ProductCard = () => {
+export const InventoryCard = ({
+  name,
+  count,
+  created_at,
+  updated_at,
+  deleted_at,
+  memo,
+  category
+}: inventoryCardProps) => {
+
+  // 一覧画面ではカテゴリは日本語表記で表示
+  const CategoryLabel: categoryLabelType = {
+    food: "食料",
+    drink: "飲料",
+    furniture: "家具",
+    electronic: "家電",
+    stationery: "文房具",
+    others: "その他"
+  };
 
   return (
     <Card>
       <CardHeader
-        title="タイトル" />
+        title={name} />
       <CardContent>
-        <Typography variant="body1">商品情報</Typography>
+        <Typography variant="body2">カテゴリ：{CategoryLabel[category]}</Typography>
+        <Typography variant="body2">残り個数：{count}</Typography>
       </CardContent>
       <CardActions>
-        <Button>詳細</Button>
+        <InventoryDetailButton />
       </CardActions>
     </Card>
   )

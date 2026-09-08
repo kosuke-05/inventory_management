@@ -33,3 +33,14 @@ export const InventorySubmitButton = () => {
     </Button>
   )
 };
+
+// 在庫情報の詳細ボタン
+export const InventoryDetailButton = () => {
+
+  return (
+    <Button
+      variant="text">
+      詳細
+    </Button>
+  )
+};

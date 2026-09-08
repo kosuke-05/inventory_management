@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Stack, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import { inventoryRegistrationValidation } from "../../schemas/user/inventory/inventoryRegistrationValidations";
-import type { categoryLabelType, inventoryData, inventoryFieldsType, inventoryRegistrationValidationType } from "../../types/inventory/inventoryTypes";
+import type { categoryType, inventoryData, inventoryFieldsType, inventoryRegistrationValidationType } from "../../types/inventory/inventoryTypes";
 import { InventoryTextField } from "../../components/textFields/inventory/textFieldComponents";
 import { InventorySelectBox } from "../../components/selectBox/inventory/selectBox";
 import { InventorySubmitButton } from "../../components/buttons/inventory/buttons";
@@ -28,7 +28,7 @@ export const InventoryRegistration = () => {
   const inventoryPostHook = InventoryPostHook();
 
   // カテゴリ
-  const CategoryLabel: categoryLabelType[] = [
+  const CategoryLabel: categoryType[] = [
     { en: "food", ja: "食品" },
     { en: "drink", ja: "飲料" },
     { en: "furniture", ja: "家具" },
