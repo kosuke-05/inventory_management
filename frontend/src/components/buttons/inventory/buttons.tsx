@@ -2,7 +2,8 @@
 
 import { Button } from "@mui/material"
 import { useFormContext } from "react-hook-form";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import type { inventoryDetailButtonProps } from "../../../types/inventory/inventoryTypes";
 
 // 在庫登録画面に遷移するボタン
 export const InventoryRegistrationButton = () => {
@@ -35,11 +36,14 @@ export const InventorySubmitButton = () => {
 };
 
 // 在庫情報の詳細ボタン
-export const InventoryDetailButton = () => {
+export const InventoryDetailButton = ({
+  onClick
+}: inventoryDetailButtonProps) => {
 
   return (
     <Button
-      variant="text">
+      variant="text"
+      onClick={onClick}>
       詳細
     </Button>
   )

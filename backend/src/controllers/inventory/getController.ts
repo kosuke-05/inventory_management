@@ -11,7 +11,5 @@ export const GetInventoryController = async (req: Request, res: Response) => {
     })
   }
 
-  return res.status(200).json({
-    data: result
-  });
+  return res.status(200).json(result);
 };

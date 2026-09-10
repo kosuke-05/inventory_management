@@ -3,6 +3,6 @@ import { GetInventoryController } from "../../controllers/inventory/getControlle
 
 const getRoute = Router();
 
-getRoute.post("/", GetInventoryController);
+getRoute.get("/", GetInventoryController);
 
 export default getRoute;

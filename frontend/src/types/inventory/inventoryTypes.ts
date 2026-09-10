@@ -44,10 +44,10 @@ export type inventoryCardProps = {
   name: string,
   count: number,
   created_at: string,
-  updated_at: string,
+  updated_at: string
   deleted_at: string,
-  memo?: string,
   category: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others"
+  onClick: () => void
 };
 
 // カテゴリラベル
@@ -59,3 +59,16 @@ export type categoryLabelType = {
   stationery: "文房具",
   others: "その他"
 };
+
+// 詳細ボタンのprops
+export type inventoryDetailButtonProps = {
+  onClick: () => void
+};
+
+// 詳細ダイアログのprops
+export type inventoryDetailDialogProps = {
+  created_at: string,
+  updated_at: string
+  deleted_at: string,
+  memo?: string
+}
