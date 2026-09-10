@@ -9,7 +9,10 @@ export const InventoryStore = create<InventoryStoreType>()(
     (set) => ({
       errorMessage: null,
       setErrorMessage: (msg: string) => set({ errorMessage: msg }),
-      resetErrorMessage: () => set({ errorMessage: null })
+      resetErrorMessage: () => set({ errorMessage: null }),
+
+      inventoryDetailDialog: false,
+      setInventoryDetailDialog: (bool: boolean) => set({ inventoryDetailDialog: bool })
     }),
     {
       name: "local-storage"

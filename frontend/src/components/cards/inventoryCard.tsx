@@ -17,8 +17,8 @@ export const InventoryCard = ({
   created_at,
   updated_at,
   deleted_at,
-  memo,
-  category
+  category,
+  onClick
 }: inventoryCardProps) => {
 
   // 一覧画面ではカテゴリは日本語表記で表示
@@ -40,7 +40,8 @@ export const InventoryCard = ({
         <Typography variant="body2">残り個数：{count}</Typography>
       </CardContent>
       <CardActions>
-        <InventoryDetailButton />
+        <InventoryDetailButton
+          onClick={onClick} />
       </CardActions>
     </Card>
   )
