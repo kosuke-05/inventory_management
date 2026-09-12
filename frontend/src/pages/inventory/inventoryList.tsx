@@ -1,6 +1,6 @@
 "use client"
 
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { InventoryCard } from "../../components/cards/inventoryCard";
 import { GetInventoryHook } from "../../hooks/user/inventory/inventoryGet";
 import type { inventoryArrayType } from "../../types/inventory/inventoryTypes";
@@ -46,6 +46,14 @@ export const InventoriesList = () => {
           ))}
         </Grid>
       </Grid>
+
+      {/** 在庫詳細ダイアログ */}
+      <Box
+        sx={{
+          p: 2
+        }}>
+        <InventoryDetailDialog />
+      </Box>
     </>
   )
 };
