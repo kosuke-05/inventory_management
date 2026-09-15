@@ -46,6 +46,7 @@ export type inventoryCardProps = {
   created_at: string,
   updated_at: string
   deleted_at: string,
+  memo?: string
   category: "food" | "drink" | "furniture" | "electronic" | "stationery" | "others"
   onClick: () => void
 };
@@ -62,6 +63,10 @@ export type categoryLabelType = {
 
 // 詳細ボタンのprops
 export type inventoryDetailButtonProps = {
+  created_at: string,
+  updated_at: string,
+  deleted_at: string,
+  memo?: string,
   onClick: () => void
 };
 
@@ -71,4 +76,12 @@ export type inventoryDetailDialogProps = {
   updated_at: string
   deleted_at: string,
   memo?: string
-}
+};
+
+// 在庫の詳細情報
+export type inventoryDataType = {
+  created_at: string,
+  updated_at: string
+  deleted_at: string,
+  memo: string | undefined
+};

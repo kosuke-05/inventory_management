@@ -17,6 +17,7 @@ export const InventoryCard = ({
   created_at,
   updated_at,
   deleted_at,
+  memo,
   category,
   onClick
 }: inventoryCardProps) => {
@@ -41,6 +42,10 @@ export const InventoryCard = ({
       </CardContent>
       <CardActions>
         <InventoryDetailButton
+          created_at={created_at}
+          updated_at={updated_at}
+          deleted_at={deleted_at}
+          memo={memo}
           onClick={onClick} />
       </CardActions>
     </Card>
