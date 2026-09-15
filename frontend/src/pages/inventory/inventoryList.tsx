@@ -40,6 +40,7 @@ export const InventoriesList = () => {
               created_at={item.created_at}
               updated_at={item.updated_at}
               deleted_at={item.deleted_at}
+              memo={item.memo}
               count={item.count}
               category={item.category}
               onClick={afterInventoryDetailButton} />
