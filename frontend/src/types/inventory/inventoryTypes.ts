@@ -30,6 +30,7 @@ export type inventoryData = {
 
 // DBから取得したデータ形式
 export type inventoryArrayType = {
+  id: number,
   name: string,
   count: number,
   created_at: string,
@@ -41,6 +42,7 @@ export type inventoryArrayType = {
 
 // InventoryCardのprops
 export type inventoryCardProps = {
+  id: number,
   name: string,
   count: number,
   created_at: string,
@@ -63,6 +65,7 @@ export type categoryLabelType = {
 
 // 詳細ボタンのprops
 export type inventoryDetailButtonProps = {
+  id: number,
   created_at: string,
   updated_at: string,
   deleted_at: string,
@@ -80,8 +83,20 @@ export type inventoryDetailDialogProps = {
 
 // 在庫の詳細情報
 export type inventoryDataType = {
+  id: number,
   created_at: string,
   updated_at: string
   deleted_at: string,
   memo: string | undefined
+};
+
+// 在庫ダイアログのpropsの型
+export type inventoryDeleteProps = {
+  onClick: (id: number) => void
+};
+
+// 在庫ダイアログ内の削除ボタンのprops
+export type inventoryDetailDeleteButtonProps = {
+  id: number | null,
+  onClick: (id: number) => void
 };

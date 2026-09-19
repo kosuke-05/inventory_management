@@ -8,6 +8,7 @@ export type inventoryType = {
 
 // DBから取得したデータ形式
 export type inventoryArrayType = {
+  id: number,
   name: string,
   count: number,
   created_at: string,
