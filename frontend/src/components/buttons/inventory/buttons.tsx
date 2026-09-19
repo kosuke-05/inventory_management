@@ -3,7 +3,7 @@
 import { Button } from "@mui/material"
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import type { inventoryDetailButtonProps } from "../../../types/inventory/inventoryTypes";
+import type { inventoryDetailButtonProps, inventoryDetailDeleteButtonProps } from "../../../types/inventory/inventoryTypes";
 import { InventoryStore } from "../../../stores/inventory/inventoryStore";
 
 // 在庫登録画面に遷移するボタン
@@ -38,6 +38,7 @@ export const InventorySubmitButton = () => {
 
 // 在庫情報の詳細ボタン
 export const InventoryDetailButton = ({
+  id,
   created_at,
   updated_at,
   deleted_at,
@@ -52,14 +53,36 @@ export const InventoryDetailButton = ({
       variant="text"
       onClick={() => {
         setInventoryData({
+          id,
           created_at,
           updated_at,
           deleted_at,
           memo
         }),
-        onClick
+        onClick();
       }}>
       詳細
     </Button>
+  )
+};
+
+/**
+ * 在庫詳細ダイアログ内の削除ボタン
+ * ①DB内に登録している在庫情報自体を削除するAPI通信
+ */
+export const InventoryDetailDeleteButton = ({
+  id,
+  onClick
+}: inventoryDetailDeleteButtonProps) => {
+
+  return (
+    <Button
+      variant="contained"
+      onClick={() => {
+        if(id !== null) onClick(id);
+      }}>
+      削除
+    </Button>
+
   )
 };

@@ -9,6 +9,7 @@ import { InventoryTextField } from "../../components/textFields/inventory/textFi
 import { InventorySelectBox } from "../../components/selectBox/inventory/selectBox";
 import { InventorySubmitButton } from "../../components/buttons/inventory/buttons";
 import { InventoryPostHook } from "../../hooks/user/inventory/inventoryPost";
+import { useNavigate } from "react-router-dom";
 
 // 在庫登録画面
 export const InventoryRegistration = () => {
@@ -61,11 +62,17 @@ export const InventoryRegistration = () => {
       placeholder: "任意",
       component: "textField"
     }
-  ]
+  ];
+
+  // 画面遷移
+  const navigate = useNavigate();
 
   // 在庫登録ボタン押下後の処理
   const afterInventorySubmitButton = (data: inventoryData) => {
     inventoryPostHook.mutate(data);
+
+    // 在庫一覧画面に遷移
+    navigate("/inventories");
 
     // 入力フォームのリセット
     inventoryRegistrationMethods.reset();

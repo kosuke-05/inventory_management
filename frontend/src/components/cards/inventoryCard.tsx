@@ -12,6 +12,7 @@ import { InventoryDetailButton } from "../buttons/inventory/buttons";
  * ③CardActions → アクションボタン等
  */
 export const InventoryCard = ({
+  id,
   name,
   count,
   created_at,
@@ -33,15 +34,15 @@ export const InventoryCard = ({
   };
 
   return (
-    <Card>
-      <CardHeader
-        title={name} />
+    <Card sx={{ height: 270 }}>
+      <CardHeader title={name} />
       <CardContent>
         <Typography variant="body2">カテゴリ：{CategoryLabel[category]}</Typography>
         <Typography variant="body2">残り個数：{count}</Typography>
       </CardContent>
       <CardActions>
         <InventoryDetailButton
+          id={id}
           created_at={created_at}
           updated_at={updated_at}
           deleted_at={deleted_at}

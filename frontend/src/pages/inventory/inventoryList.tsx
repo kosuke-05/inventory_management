@@ -6,6 +6,7 @@ import { GetInventoryHook } from "../../hooks/user/inventory/inventoryGet";
 import type { inventoryArrayType } from "../../types/inventory/inventoryTypes";
 import { InventoryStore } from "../../stores/inventory/inventoryStore";
 import { InventoryDetailDialog } from "../../components/dialog/invnetory/inventoryDialog";
+import { DeleteInventoryHook } from "../../hooks/user/inventory/inventoryDelete";
 
 /**
  * 商品一覧画面
@@ -17,6 +18,7 @@ export const InventoriesList = () => {
    * ①isErrorはエラーメッセージを表示する際に使用する
    */
   const { data, isError } = GetInventoryHook();
+  const deleteInventoryHook = DeleteInventoryHook();
 
   const inventoryData: inventoryArrayType[] = data ?? [];
 
@@ -28,14 +30,20 @@ export const InventoriesList = () => {
     setInventoryDetailDialog(true);
   };
 
+  // 詳細ダイアログ内の削除ボタン押下後の処理
+  const afterInventoryDetailDeleteButton = (id: number) => {
+    deleteInventoryHook(id);
+  };
+
   return (
     <>
-      <Typography variant="h6">商品一覧</Typography>
+      <Typography variant="h6" sx={{ mb: 2 }}>商品一覧</Typography>
       <Grid container spacing={2}>
-        <Grid size={4}>
-          {inventoryData.map((item) => (
+        {inventoryData.map((item) => (
+          <Grid size={4}>
             <InventoryCard
-              key={item.name}
+              key={item.id}
+              id={item.id}
               name={item.name}
               created_at={item.created_at}
               updated_at={item.updated_at}
@@ -44,8 +52,8 @@ export const InventoriesList = () => {
               count={item.count}
               category={item.category}
               onClick={afterInventoryDetailButton} />
-          ))}
-        </Grid>
+          </Grid>
+        ))}
       </Grid>
 
       {/** 在庫詳細ダイアログ */}
@@ -53,7 +61,8 @@ export const InventoriesList = () => {
         sx={{
           p: 2
         }}>
-        <InventoryDetailDialog />
+        <InventoryDetailDialog
+          onClick={afterInventoryDetailDeleteButton} />
       </Box>
     </>
   )

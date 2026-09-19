@@ -11,6 +11,7 @@ export type InventoryStoreType = {
 
   // カードの詳細ボタン押下後に特定の在庫情報を渡す
   inventoryData: {
+    id: number | null,
     created_at: string | null,
     updated_at: string | null,
     deleted_at: string | null

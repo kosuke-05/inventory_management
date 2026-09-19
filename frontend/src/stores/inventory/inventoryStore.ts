@@ -16,6 +16,7 @@ export const InventoryStore = create<InventoryStoreType>()(
       setInventoryDetailDialog: (bool: boolean) => set({ inventoryDetailDialog: bool }),
 
       inventoryData: {
+        id: null,
         created_at: null,
         updated_at: null,
         deleted_at: null,
