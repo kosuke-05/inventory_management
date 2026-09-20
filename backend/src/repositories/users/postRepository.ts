@@ -8,5 +8,11 @@ export const PostRepository = async (data: userDataType) => {
     [data.name, data.mailAddress, data.passWord]
   );
 
+  console.log(
+    `
+      登録情報：${result.rows}
+    `
+  )
+
   return result.rows[0];
 };

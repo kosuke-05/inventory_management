@@ -32,7 +32,7 @@ export const InventoriesList = () => {
 
   // 詳細ダイアログ内の削除ボタン押下後の処理
   const afterInventoryDetailDeleteButton = (id: number) => {
-    deleteInventoryHook(id);
+    deleteInventoryHook.mutate(id);
   };
 
   return (

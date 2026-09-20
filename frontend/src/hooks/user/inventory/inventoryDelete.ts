@@ -9,10 +9,14 @@ export const DeleteInventoryHook = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => DeleteInventoryApi(),
+    mutationFn: (id: number) => DeleteInventoryApi(id),
 
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["inventories"] });
+    },
 
+    onError: (res) => {
+      // エラーメッセージの設定
     }
   })
 }
