@@ -4,6 +4,7 @@ import postRouter from "./routes/users/postRoute";
 import loginRouter from "./routes/users/loginRoute";
 import postInventoryRoute from "./routes/inventory/postRoute";
 import getRoute from "./routes/inventory/getRoute";
+import deleteRouter from "./routes/inventory/deleteRoute";
 
 // expressの設定ファイル
 const app = express();
@@ -19,5 +20,6 @@ app.use("/user/registration", postRouter);
 app.use("/user/login", loginRouter);
 app.use("/inventory/registration", postInventoryRoute);
 app.use("/inventory/get", getRoute);
+app.use("/inventory/delete", deleteRouter);
 
 export default app;
