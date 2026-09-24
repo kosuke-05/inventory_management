@@ -71,18 +71,34 @@ export const InventoryDetailButton = ({
  * ①DB内に登録している在庫情報自体を削除するAPI通信
  */
 export const InventoryDetailDeleteButton = ({
-  id,
-  onClick
+  id
 }: inventoryDetailDeleteButtonProps) => {
+  // ストアから取得
+  const setInventoryId = InventoryStore((state) => state.setInventoryData);
+  const setInventoryDeleteConfirmationDialog = InventoryStore((state) => state.setInventoryDeleteConfirmationDialog);
 
   return (
     <Button
       variant="contained"
-      onClick={() => {
-        if(id !== null) onClick(id);
-      }}>
+      onClick={
+        () => {
+          if(id !== null) setInventoryId(id);
+          setInventoryDeleteConfirmationDialog(true);
+        }
+      }>
       削除
     </Button>
 
+  )
+};
+
+// 在庫削除確認ダイアログ内の【はい】ボタン
+export const InventoryDeleteYesButton = () => {
+
+  return (
+    <Button
+      variant="contained">
+      はい
+    </Button>
   )
 };

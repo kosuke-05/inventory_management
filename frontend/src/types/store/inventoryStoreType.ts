@@ -17,5 +17,13 @@ export type InventoryStoreType = {
     deleted_at: string | null
     memo?: string | undefined
   },
-  setInventoryData: (data: inventoryDataType) => void
+  setInventoryData: (data: inventoryDataType) => void,
+
+  // 在庫削除の際の情報管理
+  inventoryId: number | null,
+  setInventoryId: (id: number) => void,
+
+  // 在庫削除確認ダイアログの切り替え
+  inventoryDeleteConfirmationDialog: boolean,
+  setInventoryDeleteConfirmationDialog: (bool: boolean) => void
 };

@@ -97,6 +97,5 @@ export type inventoryDeleteProps = {
 
 // 在庫ダイアログ内の削除ボタンのprops
 export type inventoryDetailDeleteButtonProps = {
-  id: number | null,
-  onClick: (id: number) => void
+  id: number | null
 };
