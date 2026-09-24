@@ -20,6 +20,8 @@ export const InventoriesList = () => {
   const { data, isError } = GetInventoryHook();
   const deleteInventoryHook = DeleteInventoryHook();
 
+  console.log(`dataの中身：${data}`);
+
   const inventoryData: inventoryArrayType[] = data ?? [];
 
   // ストアから取得
@@ -32,7 +34,7 @@ export const InventoriesList = () => {
 
   // 詳細ダイアログ内の削除ボタン押下後の処理
   const afterInventoryDetailDeleteButton = (id: number) => {
-    deleteInventoryHook.mutate(id);
+    // deleteInventoryHook.mutate(id);
   };
 
   return (
@@ -40,7 +42,7 @@ export const InventoriesList = () => {
       <Typography variant="h6" sx={{ mb: 2 }}>商品一覧</Typography>
       <Grid container spacing={2}>
         {inventoryData.map((item) => (
-          <Grid size={4}>
+          <Grid size={4} key={item.id}>
             <InventoryCard
               key={item.id}
               id={item.id}

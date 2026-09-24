@@ -48,7 +48,7 @@ export const UserRegistration = () => {
   const userRegistration = (data: UserRegistrationValidationType) => {
     userPost.mutate(data);
     registrationMethods.reset();
-    navigate("/products");
+    navigate("/inventories");
   };
 
   // トップ画面に戻る処理

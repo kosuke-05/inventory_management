@@ -22,7 +22,13 @@ export const InventoryStore = create<InventoryStoreType>()(
         deleted_at: null,
         memo: undefined
       },
-      setInventoryData: (data: inventoryDataType) => set({ inventoryData: data })
+      setInventoryData: (data: inventoryDataType) => set({ inventoryData: data }),
+
+      inventoryId: null,
+      setInventoryId: (id: number) => set({ inventoryId: id }),
+
+      inventoryDeleteConfirmationDialog: false,
+      setInventoryDeleteConfirmationDialog: (bool: boolean) => set({ inventoryDeleteConfirmationDialog: bool })
     }),
     {
       name: "local-storage"

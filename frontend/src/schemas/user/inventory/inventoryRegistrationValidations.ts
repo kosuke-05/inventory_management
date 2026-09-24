@@ -23,8 +23,8 @@ export const inventoryRegistrationValidation = zod.object({
   memo:
     zod
     .string()
-    .max(30, {
-      message: "30文字以内で登録して下さい。"
+    .max(100, {
+      message: "100文字以内で登録して下さい。"
     })
     .optional(),
 
