@@ -3,7 +3,7 @@
 import { Button } from "@mui/material"
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import type { inventoryDeleteYesButtonProps, inventoryDetailButtonProps, inventoryDetailDeleteButtonProps } from "../../../types/inventory/inventoryTypes";
+import type { inventoryDeleteNoButtonProps, inventoryDeleteYesButtonProps, inventoryDetailButtonProps, inventoryDetailDeleteButtonProps } from "../../../types/inventory/inventoryTypes";
 import { InventoryStore } from "../../../stores/inventory/inventoryStore";
 
 // 在庫登録画面に遷移するボタン
@@ -72,11 +72,12 @@ export const InventoryDetailButton = ({
  * ②この段階で在庫idだけはsetterに渡す
  */
 export const InventoryDetailDeleteButton = ({
-  id
+  id,
+  setInventoryDetailDialog
 }: inventoryDetailDeleteButtonProps) => {
   // ストアから取得
   const setInventoryId = InventoryStore((state) => state.setInventoryId);
-  const setInventoryDetailDeleteButtonTrigger = InventoryStore((state) => state.setInventoryDetailDeleteButtonTrigger);
+  const setInventoryDetailDeleteAlertTrigger = InventoryStore((state) => state.setInventoryDetailDeleteAlertTrigger);
 
   return (
     <Button
@@ -84,7 +85,8 @@ export const InventoryDetailDeleteButton = ({
       onClick={
         () => {
           if(id !== null) setInventoryId(id);
-          setInventoryDetailDeleteButtonTrigger(true);
+          setInventoryDetailDeleteAlertTrigger(true);
+          setInventoryDetailDialog(false);
         }
       }>
       削除
@@ -101,12 +103,22 @@ export const InventoryDeleteYesButton = ({
   return (
     <Button
       variant="text"
-      onClick={
-        () => {
-          onClick()
-        }
-      }>
+      onClick={() => onClick()} >
       はい
+    </Button>
+  )
+};
+
+// 在庫削除確認ダイアログ内の【いいえ】ボタン
+export const InventoryDeleteNoButton = ({
+  setInventoryDetailDeleteAlertTrigger
+}: inventoryDeleteNoButtonProps) => {
+
+  return (
+    <Button
+      variant="text"
+      onClick={() => setInventoryDetailDeleteAlertTrigger(false)}>
+      いいえ
     </Button>
   )
 };

@@ -92,20 +92,27 @@ export type inventoryDataType = {
 
 // 在庫ダイアログのpropsの型
 export type inventoryDeleteProps = {
-  onClick: (id: number) => void
+  onClick: () => void
 };
 
 // 在庫ダイアログ内の削除ボタンのprops
 export type inventoryDetailDeleteButtonProps = {
-  id: number | null
+  id: number | null,
+  setInventoryDetailDialog: (bool: boolean) => void
 };
 
 // 在庫削除確認ダイアログのprops
 export type inventoryDeleteConfirmationAlertProps = {
-  onClick: (id: number) => void
+  onClick: () => void,
+  setInventoryDetailDeleteAlertTrigger: (bool: boolean) => void
 };
 
 // 削除確認【はい】ボタンのprops
 export type inventoryDeleteYesButtonProps = {
-  onClick: (id: number) => void
+  onClick: () => void
+};
+
+// 削除確認【いいえ】ボタンのprops
+export type inventoryDeleteNoButtonProps = {
+  setInventoryDetailDeleteAlertTrigger: (bool: boolean) => void
 };

@@ -14,6 +14,8 @@ export const InventoryDetailDialog = ({
   const inventoryDetailDialog = InventoryStore((state) => state.inventoryDetailDialog);
   const setInventoryDetailDialog = InventoryStore((state) => state.setInventoryDetailDialog);
   const inventoryData = InventoryStore((state) => state.inventoryData);
+  const inventoryDetailDeleteAlertTrigger = InventoryStore((state) => state.inventoryDetailDeleteAlertTrigger);
+  const setInventoryDetailDeleteAlertTrigger = InventoryStore((state) => state.setInventoryDetailDeleteAlertTrigger);
 
   return (
     <>
@@ -35,13 +37,17 @@ export const InventoryDetailDialog = ({
         </DialogContent>
         <DialogActions>
           <InventoryDetailDeleteButton
-            id={inventoryData.id} />
+            id={inventoryData.id}
+            setInventoryDetailDialog={setInventoryDetailDialog} />
         </DialogActions>
       </Dialog>
 
       {/** 削除ボタン押下後に表示する確認ダイアログ */}
-      <InventoryDeleteConfirmationAlert
-        onClick={onClick} />
+      {inventoryDetailDeleteAlertTrigger && (
+        <InventoryDeleteConfirmationAlert
+          onClick={onClick}
+          setInventoryDetailDeleteAlertTrigger={setInventoryDetailDeleteAlertTrigger} />
+      )}
     </>
   )
 };

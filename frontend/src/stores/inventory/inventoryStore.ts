@@ -27,8 +27,8 @@ export const InventoryStore = create<InventoryStoreType>()(
       inventoryId: null,
       setInventoryId: (id: number) => set({ inventoryId: id }),
 
-      inventoryDetailDeleteButtonTrigger: false,
-      setInventoryDetailDeleteButtonTrigger: (bool: boolean) => set({ inventoryDetailDeleteButtonTrigger: bool })
+      inventoryDetailDeleteAlertTrigger: false,
+      setInventoryDetailDeleteAlertTrigger: (bool: boolean) => set({ inventoryDetailDeleteAlertTrigger: bool })
 }),
     {
       name: "local-storage"
