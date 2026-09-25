@@ -23,7 +23,7 @@ export type InventoryStoreType = {
   inventoryId: number | null,
   setInventoryId: (id: number) => void,
 
-  // 在庫削除確認ダイアログの切り替え
-  inventoryDeleteConfirmationDialog: boolean,
-  setInventoryDeleteConfirmationDialog: (bool: boolean) => void
+  // 在庫詳細ダイアログの削除ボタンが押下されたか否かの判定
+  inventoryDetailDeleteButtonTrigger: boolean,
+  setInventoryDetailDeleteButtonTrigger: (bool: boolean) => void
 };

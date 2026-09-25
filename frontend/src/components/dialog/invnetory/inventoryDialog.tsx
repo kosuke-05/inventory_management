@@ -4,7 +4,7 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, Stack, Typography } 
 import { InventoryStore } from "../../../stores/inventory/inventoryStore";
 import { InventoryDetailDeleteButton } from "../../buttons/inventory/buttons";
 import type { inventoryDeleteProps } from "../../../types/inventory/inventoryTypes";
-import { InventoryDeleteConfirmationDialog } from "./inventoryDeleteConfirmation";
+import { InventoryDeleteConfirmationAlert } from "../../alert/inventory/inventoryDeleteConfirmation";
 
 // 在庫の詳細情報を表示するダイアログ
 export const InventoryDetailDialog = ({
@@ -40,7 +40,7 @@ export const InventoryDetailDialog = ({
       </Dialog>
 
       {/** 削除ボタン押下後に表示する確認ダイアログ */}
-      <InventoryDeleteConfirmationDialog
+      <InventoryDeleteConfirmationAlert
         onClick={onClick} />
     </>
   )

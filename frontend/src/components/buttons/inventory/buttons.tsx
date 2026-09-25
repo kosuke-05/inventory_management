@@ -3,7 +3,7 @@
 import { Button } from "@mui/material"
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import type { inventoryDetailButtonProps, inventoryDetailDeleteButtonProps } from "../../../types/inventory/inventoryTypes";
+import type { inventoryDeleteYesButtonProps, inventoryDetailButtonProps, inventoryDetailDeleteButtonProps } from "../../../types/inventory/inventoryTypes";
 import { InventoryStore } from "../../../stores/inventory/inventoryStore";
 
 // 在庫登録画面に遷移するボタン
@@ -68,14 +68,15 @@ export const InventoryDetailButton = ({
 
 /**
  * 在庫詳細ダイアログ内の削除ボタン
- * ①DB内に登録している在庫情報自体を削除するAPI通信
+ * ①在庫削除確認アラートを表示するためのトリガー
+ * ②この段階で在庫idだけはsetterに渡す
  */
 export const InventoryDetailDeleteButton = ({
   id
 }: inventoryDetailDeleteButtonProps) => {
   // ストアから取得
-  const setInventoryId = InventoryStore((state) => state.setInventoryData);
-  const setInventoryDeleteConfirmationDialog = InventoryStore((state) => state.setInventoryDeleteConfirmationDialog);
+  const setInventoryId = InventoryStore((state) => state.setInventoryId);
+  const setInventoryDetailDeleteButtonTrigger = InventoryStore((state) => state.setInventoryDetailDeleteButtonTrigger);
 
   return (
     <Button
@@ -83,7 +84,7 @@ export const InventoryDetailDeleteButton = ({
       onClick={
         () => {
           if(id !== null) setInventoryId(id);
-          setInventoryDeleteConfirmationDialog(true);
+          setInventoryDetailDeleteButtonTrigger(true);
         }
       }>
       削除
@@ -93,11 +94,18 @@ export const InventoryDetailDeleteButton = ({
 };
 
 // 在庫削除確認ダイアログ内の【はい】ボタン
-export const InventoryDeleteYesButton = () => {
+export const InventoryDeleteYesButton = ({
+  onClick
+}: inventoryDeleteYesButtonProps) => {
 
   return (
     <Button
-      variant="contained">
+      variant="text"
+      onClick={
+        () => {
+          onClick()
+        }
+      }>
       はい
     </Button>
   )

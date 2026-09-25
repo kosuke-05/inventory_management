@@ -99,3 +99,13 @@ export type inventoryDeleteProps = {
 export type inventoryDetailDeleteButtonProps = {
   id: number | null
 };
+
+// 在庫削除確認ダイアログのprops
+export type inventoryDeleteConfirmationAlertProps = {
+  onClick: (id: number) => void
+};
+
+// 削除確認【はい】ボタンのprops
+export type inventoryDeleteYesButtonProps = {
+  onClick: (id: number) => void
+};
