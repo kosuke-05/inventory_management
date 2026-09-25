@@ -26,6 +26,7 @@ export const InventoriesList = () => {
 
   // ストアから取得
   const setInventoryDetailDialog = InventoryStore((state) => state.setInventoryDetailDialog);
+  const inventoryId = InventoryStore((state) => state.inventoryId);
 
   // 詳細ボタン押下後の処理
   const afterInventoryDetailButton = () => {
@@ -33,8 +34,8 @@ export const InventoriesList = () => {
   };
 
   // 詳細ダイアログ内の削除ボタン押下後の処理
-  const afterInventoryDetailDeleteButton = (id: number) => {
-    // deleteInventoryHook.mutate(id);
+  const afterInventoryDetailDeleteButton = () => {
+    if(inventoryId) deleteInventoryHook.mutate(inventoryId);
   };
 
   return (
