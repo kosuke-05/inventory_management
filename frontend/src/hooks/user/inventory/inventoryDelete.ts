@@ -16,6 +16,8 @@ export const DeleteInventoryHook = () => {
     mutationFn: (id: number) => DeleteInventoryApi(id),
 
     onSuccess: () => {
+      console.log("hookの成功デバッグ");
+      
       queryClient.invalidateQueries({ queryKey: ["inventories"] });
       setInventoryDetailDeleteAlertTrigger(false);
     },
