@@ -7,6 +7,8 @@ export const DeleteInventoryRepository = async (id: number) => {
     [id]
   );
 
+  console.log(`削除件数：${result.rowCount}`);
+
   // 削除処理に失敗した場合
   if(result.rowCount === 0) return false;
 

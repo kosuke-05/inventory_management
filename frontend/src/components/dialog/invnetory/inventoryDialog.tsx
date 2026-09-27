@@ -23,7 +23,7 @@ export const InventoryDetailDialog = ({
         open={inventoryDetailDialog}
         onClose={() => setInventoryDetailDialog(false)}>
         <DialogTitle>
-          <Typography variant="h6">詳細情報</Typography>
+          詳細情報
         </DialogTitle>
         <DialogContent>
           <Stack direction="column" spacing={1}>

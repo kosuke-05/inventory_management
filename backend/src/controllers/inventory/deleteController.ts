@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { DeleteInventoryService } from "../../services/inventory/deleteService";
 
 export const DeleteInventoryController = async (req: Request, res: Response) => {
-  const id = req.body;
+  const { id } = req.body;
 
   // 正常に受け取れなかった場合
   if(!id) {
@@ -14,10 +14,10 @@ export const DeleteInventoryController = async (req: Request, res: Response) => 
   const result: boolean = await DeleteInventoryService(id);
 
   if(!result) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "削除処理に失敗しました。"
     })
   };
 
-  return res.status(200);
+  return res.sendStatus(200);
 };
