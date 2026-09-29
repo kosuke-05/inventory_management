@@ -14,12 +14,6 @@ export const LoginController = async (req: Request, res: Response) => {
 
   const result: resLoginDataType | null = await LoginService(data);
 
-  console.log(
-    `Controller：
-      名前：${result?.data.name}
-      メールアドレス：${result?.data.mailAddress}
-    `);
-
   // Serviceからnullが返ってきた場合
   if(!result) {
     return res.status(401).json({

@@ -7,7 +7,9 @@ export type UserStoreType = {
   resetUser: () => void,
 
   // ログイン処理の際のエラーメッセーを管理
+  errorMessageTrigger: boolean,
+  setErrorMessageTrigger: (bool: boolean) => void,
   errorMessage: string | null,
-  setErrorMessage: (msg: string) => void,
+  setErrorMessage: (msg: string | null) => void,
   resetErrorMessage: () => void
 };

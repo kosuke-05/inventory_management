@@ -9,6 +9,7 @@ import { TextFieldComponent } from "../../components/textFields/user/textFieldCo
 import { SubmitButton, UserRegistrationButton } from "../../components/buttons/users/buttons";
 import { useNavigate } from "react-router-dom";
 import { UserLoginHook } from "../../hooks/user/userLogin";
+import { UserCertificationSnackBar } from "../../components/snackbar/users/userCertification";
 
 // 【トップ画面】メールアドレス・パスワードの認証画面
 // ロジックコンポーネント
@@ -37,39 +38,45 @@ export const UserCertification = () => {
    */
   const afterSubmitButton = (data: Omit<UserRegistrationInitialValue, "name">) => {
     userLogin.mutate(data);
-  }
+    certificationMethods.reset();
+  };
 
   // 新規登録ボタンを押下後の処理
   const afterUserRegistrationButton = () => {
     navigate("/user/registration");
-  }
+  };
 
   return (
-    <FormProvider {...certificationMethods}>
-      <form onSubmit={certificationMethods.handleSubmit(afterSubmitButton)}>
-        <Typography variant="h6">ログイン</Typography>
-        <Stack direction="column" spacing={1}>
-          <TextFieldComponent
-            array={[
-              {
-                name: "mailAddress",
-                label: "メールアドレス",
-                placeholder: "sample@gmail.com"
-              },
-              {
-                name: "passWord",
-                label: "パスワード",
-                placeholder: "小文字・大文字・数字含んで5文字以上"
-              }
-            ]} />
+    <>
+      <FormProvider {...certificationMethods}>
+        <form onSubmit={certificationMethods.handleSubmit(afterSubmitButton)}>
+          <Typography variant="h6">ログイン</Typography>
+          <Stack direction="column" spacing={1}>
+            <TextFieldComponent
+              array={[
+                {
+                  name: "mailAddress",
+                  label: "メールアドレス",
+                  placeholder: "sample@gmail.com"
+                },
+                {
+                  name: "passWord",
+                  label: "パスワード",
+                  placeholder: "小文字・大文字・数字含んで5文字以上"
+                }
+              ]} />
 
-          {/** メールアドレス・パスワード送信ボタン */}
-          <SubmitButton />
+            {/** メールアドレス・パスワード送信ボタン */}
+            <SubmitButton />
 
-          {/** 新規登録ボタン */}
-          <UserRegistrationButton onClick={afterUserRegistrationButton} />
-        </Stack>
-      </form>
-    </FormProvider>
+            {/** 新規登録ボタン */}
+            <UserRegistrationButton onClick={afterUserRegistrationButton} />
+          </Stack>
+        </form>
+      </FormProvider>
+
+      {/** ログイン失敗後のアラート */}
+      <UserCertificationSnackBar />
+    </>
   )
 };

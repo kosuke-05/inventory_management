@@ -10,6 +10,7 @@ export const UserLoginHook = () => {
   // ストアから取得
   const setUser = UserStore((state) => state.setUser);
   const setErrorMessage = UserStore((state) => state.setErrorMessage);
+  const setErrorMessageTrigger = UserStore((state) => state.setErrorMessageTrigger);
 
   // 画面遷移
   const navigate = useNavigate();
@@ -24,18 +25,14 @@ export const UserLoginHook = () => {
         mailAddress: res.data.mailAddress
       })
 
-      console.log(`
-          名前：${res.data.name}
-          メールアドレス：${res.data.mailAddress}
-        `);
-
       // 在庫一覧画面に遷移
       navigate("/inventories");
     },
 
     onError: (res) => {
-      // エラーメッセージを渡す
+      // エラーメッセージ情報を渡す
       setErrorMessage(res.message);
+      setErrorMessageTrigger(true);
     }
   })
 };
