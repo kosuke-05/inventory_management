@@ -12,8 +12,10 @@ export const UserStore = create<UserStoreType>()(
       setUser: (user: UserInformationType) => set({ user: user }),
       resetUser: () => set({ user: null }),
 
+      errorMessageTrigger: false,
+      setErrorMessageTrigger: (bool: boolean) => set({ errorMessageTrigger: bool }),
       errorMessage: null,
-      setErrorMessage: (msg: string) => set({ errorMessage: msg }),
+      setErrorMessage: (msg: string | null) => set({ errorMessage: msg }),
       resetErrorMessage: () => set({ errorMessage: null })
     }),
     {
