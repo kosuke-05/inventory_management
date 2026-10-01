@@ -7,5 +7,8 @@ export const PostRepository = async (data: inventoryType) => {
     [data.name, data.count, data.memo, data.category]
   );
 
+  // 登録失敗時
+  if(result.rowCount === 0) return null;
+
   return result.rows[0];
 };

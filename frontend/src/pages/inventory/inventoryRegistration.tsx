@@ -79,31 +79,36 @@ export const InventoryRegistration = () => {
   };
 
   return (
-    <FormProvider {...inventoryRegistrationMethods}>
-      <Box>
-        <Typography variant="h6">在庫登録画面</Typography>
-        <form onSubmit={inventoryRegistrationMethods.handleSubmit(afterInventorySubmitButton)}>
-          <Stack direction="column" spacing={2} sx={{ p: 2 }}>
-            {inventoryFields.map((item) => (
-              (item.component === "textField" ?
-                <InventoryTextField
-                  key={item.name}
-                  name={item.name}
-                  label={item.label}
-                  placeholder={item.placeholder} />
-                :
-                <InventorySelectBox
-                  name={item.name}
-                  label={item.label}
-                  categoryLabel={CategoryLabel} />
-              )
-            ))}
+    <>
+      <FormProvider {...inventoryRegistrationMethods}>
+        <Box>
+          <Typography variant="h6">在庫登録画面</Typography>
+          <form onSubmit={inventoryRegistrationMethods.handleSubmit(afterInventorySubmitButton)}>
+            <Stack direction="column" spacing={2} sx={{ p: 2 }}>
+              {inventoryFields.map((item) => (
+                (item.component === "textField" ?
+                  <InventoryTextField
+                    key={item.name}
+                    name={item.name}
+                    label={item.label}
+                    placeholder={item.placeholder} />
+                  :
+                  <InventorySelectBox
+                    name={item.name}
+                    label={item.label}
+                    categoryLabel={CategoryLabel} />
+                )
+              ))}
 
-            {/** 送信ボタン */}
-            <InventorySubmitButton />
-          </Stack>
-        </form>
-      </Box>
-    </FormProvider>
+              {/** 送信ボタン */}
+              <InventorySubmitButton />
+            </Stack>
+          </form>
+        </Box>
+      </FormProvider>
+
+      {/** 在庫登録に失敗した際のエラーメッセージ */}
+      
+    </>
   )
 };
