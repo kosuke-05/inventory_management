@@ -25,5 +25,9 @@ export type InventoryStoreType = {
 
   // 在庫削除確認アラートのトリガー
   inventoryDetailDeleteAlertTrigger: boolean,
-  setInventoryDetailDeleteAlertTrigger: (bool: boolean) => void
+  setInventoryDetailDeleteAlertTrigger: (bool: boolean) => void,
+
+  // AppBarのスイッチのトリガー
+  inventorySwitch: boolean,
+  setInventorySwitch: (bool: boolean) => void
 };

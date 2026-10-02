@@ -10,6 +10,7 @@ import { InventorySelectBox } from "../../components/selectBox/inventory/selectB
 import { InventorySubmitButton } from "../../components/buttons/inventory/buttons";
 import { InventoryPostHook } from "../../hooks/user/inventory/inventoryPost";
 import { useNavigate } from "react-router-dom";
+import { InventoryRegistrationSnackBar } from "../../components/snackbar/inventory/inventoryRegistration";
 
 // 在庫登録画面
 export const InventoryRegistration = () => {
@@ -108,7 +109,7 @@ export const InventoryRegistration = () => {
       </FormProvider>
 
       {/** 在庫登録に失敗した際のエラーメッセージ */}
-      
+      <InventoryRegistrationSnackBar />
     </>
   )
 };

@@ -11,7 +11,7 @@ export const InventoryPostApi = async (data: inventoryData) => {
   });
 
   // 在庫登録に失敗した場合
-  const result = res.json();
+  const result = await res.json();
   if(!res.ok) throw new Error(result.message);
 
   return result;
