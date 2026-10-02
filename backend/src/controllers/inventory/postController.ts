@@ -23,5 +23,5 @@ export const PostInventoryController = async (req: Request, res: Response) => {
     })
   }
 
-  return res.status(201);
+  return res.sendStatus(201);
 };

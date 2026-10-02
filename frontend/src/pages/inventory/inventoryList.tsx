@@ -27,6 +27,7 @@ export const InventoriesList = () => {
   // ストアから取得
   const setInventoryDetailDialog = InventoryStore((state) => state.setInventoryDetailDialog);
   const inventoryId = InventoryStore((state) => state.inventoryId);
+  const inventorySwitch = InventoryStore((state) => state.inventorySwitch);
 
   // 詳細ボタン押下後の処理
   const afterInventoryDetailButton = () => {
@@ -41,23 +42,43 @@ export const InventoriesList = () => {
   return (
     <>
       <Typography variant="h6" sx={{ mb: 2 }}>商品一覧</Typography>
-      <Grid container spacing={2}>
-        {inventoryData.map((item) => (
-          <Grid size={4} key={item.id}>
-            <InventoryCard
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              created_at={item.created_at}
-              updated_at={item.updated_at}
-              deleted_at={item.deleted_at}
-              memo={item.memo}
-              count={item.count}
-              category={item.category}
-              onClick={afterInventoryDetailButton} />
-          </Grid>
-        ))}
-      </Grid>
+      {inventorySwitch ? (
+        <Grid container spacing={2}>
+          {inventoryData.filter((item) => item.count > 0).map((item) => (
+            <Grid size={4} key={item.id}>
+              <InventoryCard
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                created_at={item.created_at}
+                updated_at={item.updated_at}
+                deleted_at={item.deleted_at}
+                memo={item.memo}
+                count={item.count}
+                category={item.category}
+                onClick={afterInventoryDetailButton} />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Grid container spacing={2}>
+          {inventoryData.map((item) => (
+            <Grid size={4} key={item.id}>
+              <InventoryCard
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                created_at={item.created_at}
+                updated_at={item.updated_at}
+                deleted_at={item.deleted_at}
+                memo={item.memo}
+                count={item.count}
+                category={item.category}
+                onClick={afterInventoryDetailButton} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
 
       {/** 在庫詳細ダイアログ */}
       <Box

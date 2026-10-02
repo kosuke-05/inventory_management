@@ -1,15 +1,16 @@
 "use client"
 
 import { FormControlLabel, Switch } from "@mui/material";
-import { useState } from "react";
+import { InventoryStore } from "../../stores/inventory/inventoryStore";
 
 /**
  * AppBar内に配置する在庫の有無で判定するスイッチ
  * ①今回は【在庫あり】のみの切り替えのため、スイッチを実装
  */
 export const InventorySwitch = () => {
-  // スイッチの切り替え
-  const [inventorySwitch, setInventorySwitch] = useState(false);
+  // ストアから取得
+  const inventorySwitch = InventoryStore((state) => state.inventorySwitch);
+  const setInventorySwitch = InventoryStore((state) => state.setInventorySwitch);
 
   return (
     <FormControlLabel
@@ -17,7 +18,7 @@ export const InventorySwitch = () => {
       control={
         <Switch
           checked={inventorySwitch}
-          onChange={(e) => setInventorySwitch(e.target.checked)} />
+          onChange={(e) => {setInventorySwitch(e.target.checked)}} />
       }
       sx={{
         "& .MuiFormControlLabel-label": {
