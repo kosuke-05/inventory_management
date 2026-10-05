@@ -5,5 +5,7 @@ export const GetInventoryRepository = async () => {
     "SELECT * FROM inventories"
   );
 
+  if(result.rowCount === 0) return null;
+
   return result.rows;
 };

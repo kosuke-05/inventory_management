@@ -14,7 +14,7 @@ export const InventorySwitch = () => {
 
   return (
     <FormControlLabel
-      label="在庫有りのみ"
+      label="在庫ありのみ"
       control={
         <Switch
           checked={inventorySwitch}

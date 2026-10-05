@@ -50,12 +50,16 @@ export const AppBarMenu = () => {
 
               <Box sx={{ position: "relative", display: "flex", alignItems: "center"}}>
                 {/** 在庫ありのみ表示するスイッチ */}
-                <Box sx={{ position: "absolute", left: "50%", transform: "translateX(-50%)", alignItems: "center"}}>
-                  <InventorySwitch />
-                </Box>
-                <Box sx={{ ml: "auto"}}>
-                  <InventoryRegistrationButton />
-                </Box>
+                {location.pathname !== "/inventory/registration" && (
+                  <>
+                    <Box sx={{ position: "absolute", left: "50%", transform: "translateX(-50%)", alignItems: "center"}}>
+                      <InventorySwitch />
+                    </Box>
+                    <Box sx={{ ml: "auto"}}>
+                      <InventoryRegistrationButton />
+                    </Box>
+                  </>
+                )}
               </Box>
             </Stack>
           </Toolbar>
