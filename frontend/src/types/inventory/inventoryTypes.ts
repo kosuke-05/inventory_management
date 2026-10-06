@@ -116,3 +116,8 @@ export type inventoryDeleteYesButtonProps = {
 export type inventoryDeleteNoButtonProps = {
   setInventoryDetailDeleteAlertTrigger: (bool: boolean) => void
 };
+
+// InventoryGetSnackBarのprops
+export type inventoryGetSnackBarProps = {
+  error: Error | null
+};
