@@ -1,75 +1,68 @@
-# React + TypeScript + Vite
+# 在庫管理アプリ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
+商品の状態を管理するためのアプリケーション。
+ユーザー登録を行った利用者のみが在庫登録・編集・削除・閲覧を行うことが出来る仕様。
 
-Currently, two official plugins are available:
+## 使用技術
+### フロントエンド
+- React
+- TypeScript
+- Vite
+- MUI
+- React Hook Form
+- Zod
+- React Query
+- Zustand
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### バックエンド
+- Express
+- Node.js
+- TypeScript
 
-## React Compiler
+### データベース
+- PostgreSQL
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 主な機能
+- ユーザー登録
+- ユーザーログイン
+- ユーザーログアウト
+- 在庫登録
+- 在庫一覧表示
+- 在庫情報削除
+- 在庫ありのみの表示
+- ユーザーログイン失敗時のエラー表示
+- 在庫登録失敗時のエラー表示
 
-## Expanding the ESLint configuration
+## 起動方法
+### フロントエンド
+cd frontend
+npm install
+npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### バックエンド
+cd backend
+npm install
+npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### データベース
+- DataBase : inventory_management
+- port : 5433
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 環境構築
+①GitHubからclone
+②npm install
+③PostgreSQLを準備
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 工夫した点
+### エラーメッセージ
+- ユーザーログイン・在庫登録・在庫取得に失敗した場合に5秒間エラーメッセージをスナックバーで表示することにより、問題発生を視覚で認識して頂く仕様にした。
 
-```
+### AppBar
+- 在庫一覧画面から在庫登録画面に遷移後、AppBar内から【在庫登録】と【在庫ありのみ】のスイッチを未表示にすることにより、利用者が誤って押下してしまう等の混乱を防止した。
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 在庫詳細
+- 在庫詳細の確認ダイアログ内で削除ボタンを誤って押下しても、削除確認アラートを表示することにより誤削除を防止した。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+### バリデーション
+- ユーザー登録・在庫登録どちらもReact Hook Formを使用することにより、適切な内容を入力しない限り送信ボタンが押下出来ないように実装した。

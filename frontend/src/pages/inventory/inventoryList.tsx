@@ -7,6 +7,7 @@ import type { inventoryArrayType } from "../../types/inventory/inventoryTypes";
 import { InventoryStore } from "../../stores/inventory/inventoryStore";
 import { InventoryDetailDialog } from "../../components/dialog/invnetory/inventoryDialog";
 import { DeleteInventoryHook } from "../../hooks/user/inventory/inventoryDelete";
+import { InventoryGetSnackBar } from "../../components/snackbar/inventory/inventoryGet";
 
 /**
  * 商品一覧画面
@@ -15,9 +16,9 @@ import { DeleteInventoryHook } from "../../hooks/user/inventory/inventoryDelete"
 export const InventoriesList = () => {
   /**
    * hooksの取得
-   * ①isErrorはエラーメッセージを表示する際に使用する
+   * ①isErrorはエラーメッセージを表示する際に使用する（トリガー）
    */
-  const { data, isError } = GetInventoryHook();
+  const { data, isError, error } = GetInventoryHook();
   const deleteInventoryHook = DeleteInventoryHook();
 
   console.log(`dataの中身：${data}`);
@@ -88,6 +89,11 @@ export const InventoriesList = () => {
         <InventoryDetailDialog
           onClick={afterInventoryDetailDeleteButton} />
       </Box>
+
+      {/** 在庫取得に失敗した際のスナックバー */}
+      {isError && (
+        <InventoryGetSnackBar error={error} />
+      )}
     </>
   )
 };
