@@ -1,9 +1,9 @@
 "use client"
 
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { InventoryPostApi } from "../../../api/user/inventory/inventoryPost";
+import { InventoryPostApi } from "../../api/inventory/inventoryPost";
 import { useNavigate } from "react-router-dom";
-import { InventoryStore } from "../../../stores/inventory/inventoryStore";
+import { InventoryStore } from "../../stores/inventory/inventoryStore";
 
 // 在庫情報の登録
 export const InventoryPostHook = () => {

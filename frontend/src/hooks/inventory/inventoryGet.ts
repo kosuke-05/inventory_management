@@ -1,7 +1,7 @@
 "use client"
 
 import { useQuery } from "@tanstack/react-query"
-import { GetInventoryApi } from "../../../api/user/inventory/inventoryGet"
+import { GetInventoryApi } from "../../api/inventory/inventoryGet"
 
 // 在庫情報の取得
 export const GetInventoryHook = () => {

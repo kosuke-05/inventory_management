@@ -2,13 +2,14 @@
 
 import { Dialog, DialogActions, DialogContent, DialogTitle, Stack, Typography } from "@mui/material";
 import { InventoryStore } from "../../../stores/inventory/inventoryStore";
-import { InventoryDetailDeleteButton } from "../../buttons/inventory/buttons";
+import { InventoryDetailDeleteButton, InventoryDetailUpdateButton } from "../../buttons/inventory/buttons";
 import type { inventoryDeleteProps } from "../../../types/inventory/inventoryTypes";
 import { InventoryDeleteConfirmationAlert } from "../../alert/inventory/inventoryDeleteConfirmation";
 
 // 在庫の詳細情報を表示するダイアログ
 export const InventoryDetailDialog = ({
-  onClick
+  onUpdate,
+  onDelete
 }: inventoryDeleteProps) => {
   // ストアから取得
   const inventoryDetailDialog = InventoryStore((state) => state.inventoryDetailDialog);
@@ -36,6 +37,8 @@ export const InventoryDetailDialog = ({
           </Stack>
         </DialogContent>
         <DialogActions>
+          <InventoryDetailUpdateButton
+            onUpdate={onUpdate} />
           <InventoryDetailDeleteButton
             id={inventoryData.id}
             setInventoryDetailDialog={setInventoryDetailDialog} />
@@ -45,7 +48,7 @@ export const InventoryDetailDialog = ({
       {/** 削除ボタン押下後に表示する確認ダイアログ */}
       {inventoryDetailDeleteAlertTrigger && (
         <InventoryDeleteConfirmationAlert
-          onClick={onClick}
+          onDelete={onDelete}
           setInventoryDetailDeleteAlertTrigger={setInventoryDetailDeleteAlertTrigger} />
       )}
     </>

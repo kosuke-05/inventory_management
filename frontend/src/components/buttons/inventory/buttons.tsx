@@ -3,7 +3,7 @@
 import { Button } from "@mui/material"
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import type { inventoryDeleteNoButtonProps, inventoryDeleteYesButtonProps, inventoryDetailButtonProps, inventoryDetailDeleteButtonProps } from "../../../types/inventory/inventoryTypes";
+import type { inventoryDeleteNoButtonProps, inventoryDeleteYesButtonProps, inventoryDetailButtonProps, inventoryDetailDeleteButtonProps, inventoryDetailUpdateButtonProps } from "../../../types/inventory/inventoryTypes";
 import { InventoryStore } from "../../../stores/inventory/inventoryStore";
 
 // 在庫登録画面に遷移するボタン
@@ -66,6 +66,20 @@ export const InventoryDetailButton = ({
   )
 };
 
+// 在庫詳細ダイアログ内の編集ボタン
+export const InventoryDetailUpdateButton = ({
+  onUpdate
+}: inventoryDetailUpdateButtonProps) => {
+
+  return (
+    <Button
+      variant="contained"
+      onClick={onUpdate}>
+      編集
+    </Button>
+  )
+};
+
 /**
  * 在庫詳細ダイアログ内の削除ボタン
  * ①在庫削除確認アラートを表示するためのトリガー
@@ -97,13 +111,13 @@ export const InventoryDetailDeleteButton = ({
 
 // 在庫削除確認ダイアログ内の【はい】ボタン
 export const InventoryDeleteYesButton = ({
-  onClick
+  onDelete
 }: inventoryDeleteYesButtonProps) => {
 
   return (
     <Button
       variant="text"
-      onClick={() => onClick()} >
+      onClick={() => onDelete()} >
       はい
     </Button>
   )

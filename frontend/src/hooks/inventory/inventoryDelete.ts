@@ -1,8 +1,8 @@
 "use client"
 
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { DeleteInventoryApi } from "../../../api/user/inventory/inventoryDelete";
-import { InventoryStore } from "../../../stores/inventory/inventoryStore";
+import { DeleteInventoryApi } from "../../api/inventory/inventoryDelete";
+import { InventoryStore } from "../../stores/inventory/inventoryStore";
 
 // 在庫削除
 export const DeleteInventoryHook = () => {

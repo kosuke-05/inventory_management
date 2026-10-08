@@ -1,5 +1,5 @@
 import zod from "zod";
-import type { inventoryRegistrationValidation } from "../../schemas/user/inventory/inventoryRegistrationValidations";
+import type { inventoryRegistrationValidation } from "../../schemas/inventory/inventoryRegistrationValidations";
 
 // 在庫登録画面で使用するuseFormの型
 export type inventoryRegistrationValidationType = zod.infer<typeof inventoryRegistrationValidation>;
@@ -92,7 +92,8 @@ export type inventoryDataType = {
 
 // 在庫ダイアログのpropsの型
 export type inventoryDeleteProps = {
-  onClick: () => void
+  onUpdate: () => void,
+  onDelete: () => void
 };
 
 // 在庫ダイアログ内の削除ボタンのprops
@@ -103,13 +104,13 @@ export type inventoryDetailDeleteButtonProps = {
 
 // 在庫削除確認ダイアログのprops
 export type inventoryDeleteConfirmationAlertProps = {
-  onClick: () => void,
+  onDelete: () => void,
   setInventoryDetailDeleteAlertTrigger: (bool: boolean) => void
 };
 
 // 削除確認【はい】ボタンのprops
 export type inventoryDeleteYesButtonProps = {
-  onClick: () => void
+  onDelete: () => void
 };
 
 // 削除確認【いいえ】ボタンのprops
@@ -120,4 +121,9 @@ export type inventoryDeleteNoButtonProps = {
 // InventoryGetSnackBarのprops
 export type inventoryGetSnackBarProps = {
   error: Error | null
+};
+
+// InventoryDetailUpdateButtonのprops
+export type inventoryDetailUpdateButtonProps = {
+  onUpdate: () => void
 };

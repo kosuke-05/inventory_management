@@ -1,6 +1,6 @@
 "use client"
 
-import type { inventoryData } from "../../../types/inventory/inventoryTypes"
+import type { inventoryData } from "../../types/inventory/inventoryTypes"
 
 // 在庫情報の登録
 export const InventoryPostApi = async (data: inventoryData) => {

@@ -6,7 +6,7 @@ import type { inventoryDeleteConfirmationAlertProps } from "../../../types/inven
 
 // 在庫削除の確認ダイアログ
 export const InventoryDeleteConfirmationAlert = ({
-  onClick,
+  onDelete,
   setInventoryDetailDeleteAlertTrigger
 }: inventoryDeleteConfirmationAlertProps) => {
 
@@ -16,7 +16,7 @@ export const InventoryDeleteConfirmationAlert = ({
       action={
         <>
           <InventoryDeleteYesButton
-            onClick={onClick} />
+            onDelete={onDelete} />
           <InventoryDeleteNoButton
             setInventoryDetailDeleteAlertTrigger={setInventoryDetailDeleteAlertTrigger} />
         </>
