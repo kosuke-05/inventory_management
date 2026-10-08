@@ -3,12 +3,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Stack, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
-import { inventoryRegistrationValidation } from "../../schemas/user/inventory/inventoryRegistrationValidations";
+import { inventoryRegistrationValidation } from "../../schemas/inventory/inventoryRegistrationValidations";
 import type { categoryType, inventoryData, inventoryFieldsType, inventoryRegistrationValidationType } from "../../types/inventory/inventoryTypes";
 import { InventoryTextField } from "../../components/textFields/inventory/textFieldComponents";
 import { InventorySelectBox } from "../../components/selectBox/inventory/selectBox";
 import { InventorySubmitButton } from "../../components/buttons/inventory/buttons";
-import { InventoryPostHook } from "../../hooks/user/inventory/inventoryPost";
+import { InventoryPostHook } from "../../hooks/inventory/inventoryPost";
 import { useNavigate } from "react-router-dom";
 import { InventoryRegistrationSnackBar } from "../../components/snackbar/inventory/inventoryRegistration";
 

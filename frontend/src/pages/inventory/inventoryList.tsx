@@ -2,12 +2,13 @@
 
 import { Box, Grid, Typography } from "@mui/material";
 import { InventoryCard } from "../../components/cards/inventoryCard";
-import { GetInventoryHook } from "../../hooks/user/inventory/inventoryGet";
+import { GetInventoryHook } from "../../hooks/inventory/inventoryGet";
 import type { inventoryArrayType } from "../../types/inventory/inventoryTypes";
 import { InventoryStore } from "../../stores/inventory/inventoryStore";
 import { InventoryDetailDialog } from "../../components/dialog/invnetory/inventoryDialog";
-import { DeleteInventoryHook } from "../../hooks/user/inventory/inventoryDelete";
+import { DeleteInventoryHook } from "../../hooks/inventory/inventoryDelete";
 import { InventoryGetSnackBar } from "../../components/snackbar/inventory/inventoryGet";
+import { InventoryUpdateHook } from "../../hooks/inventory/inventoryUpdate";
 
 /**
  * 商品一覧画面
@@ -20,15 +21,15 @@ export const InventoriesList = () => {
    */
   const { data, isError, error } = GetInventoryHook();
   const deleteInventoryHook = DeleteInventoryHook();
-
-  console.log(`dataの中身：${data}`);
-
-  const inventoryData: inventoryArrayType[] = data ?? [];
+  const inventoryUpdateHook = InventoryUpdateHook();
+  
+  const InventoryData: inventoryArrayType[] = data ?? [];
 
   // ストアから取得
   const setInventoryDetailDialog = InventoryStore((state) => state.setInventoryDetailDialog);
   const inventoryId = InventoryStore((state) => state.inventoryId);
   const inventorySwitch = InventoryStore((state) => state.inventorySwitch);
+  const inventoryData = InventoryStore((state) => state.inventoryData);
 
   // 詳細ボタン押下後の処理
   const afterInventoryDetailButton = () => {
@@ -40,12 +41,18 @@ export const InventoriesList = () => {
     if(inventoryId) deleteInventoryHook.mutate(inventoryId);
   };
 
+  // 詳細ダイアログ内の編集ボタン押下後の処理
+  // 在庫情報編集画面で情報入力後、送信ボタンを押下してから呼び出す関数
+  const afterInventoryDetailUpdateButton = () => {
+    // if(inventoryData.id) inventoryUpdateHook.mutate(inventoryData.id);
+  };
+
   return (
     <>
       <Typography variant="h6" sx={{ mb: 2 }}>商品一覧</Typography>
       {inventorySwitch ? (
         <Grid container spacing={2}>
-          {inventoryData.filter((item) => item.count > 0).map((item) => (
+          {InventoryData.filter((item) => item.count > 0).map((item) => (
             <Grid size={4} key={item.id}>
               <InventoryCard
                 key={item.id}
@@ -63,7 +70,7 @@ export const InventoriesList = () => {
         </Grid>
       ) : (
         <Grid container spacing={2}>
-          {inventoryData.map((item) => (
+          {InventoryData.map((item) => (
             <Grid size={4} key={item.id}>
               <InventoryCard
                 key={item.id}
@@ -87,7 +94,8 @@ export const InventoriesList = () => {
           p: 2
         }}>
         <InventoryDetailDialog
-          onClick={afterInventoryDetailDeleteButton} />
+          onUpdate={afterInventoryDetailUpdateButton}
+          onDelete={afterInventoryDetailDeleteButton} />
       </Box>
 
       {/** 在庫取得に失敗した際のスナックバー */}
