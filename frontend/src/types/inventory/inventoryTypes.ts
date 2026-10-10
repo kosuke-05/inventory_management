@@ -92,7 +92,6 @@ export type inventoryDataType = {
 
 // 在庫ダイアログのpropsの型
 export type inventoryDeleteProps = {
-  onUpdate: () => void,
   onDelete: () => void
 };
 
