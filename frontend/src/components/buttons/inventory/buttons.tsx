@@ -66,20 +66,6 @@ export const InventoryDetailButton = ({
   )
 };
 
-// 在庫詳細ダイアログ内の編集ボタン
-export const InventoryDetailUpdateButton = ({
-  onUpdate
-}: inventoryDetailUpdateButtonProps) => {
-
-  return (
-    <Button
-      variant="contained"
-      onClick={onUpdate}>
-      編集
-    </Button>
-  )
-};
-
 /**
  * 在庫詳細ダイアログ内の削除ボタン
  * ①在庫削除確認アラートを表示するためのトリガー
